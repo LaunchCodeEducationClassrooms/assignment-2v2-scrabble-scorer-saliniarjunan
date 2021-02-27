@@ -119,7 +119,7 @@ function transform(objStructure)
     {      
       newPointStruct[(objStructure[iInd][jInd].toLowerCase())] = Number(iInd);
     } 
-    newPointStruct[' '] = 0;
+    //newPointStruct[' '] = 0;
   }
   return newPointStruct;
 }
