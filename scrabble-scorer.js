@@ -44,7 +44,7 @@ function simpleScore(word){
 let simpleScoreObj = {
   'name':'Simple Score',
   'description':'Each letter is worth 1 point.',
-  'scorerFunction':function(word){return simpleScore(word);}
+  'scoringFunction':function(word){return simpleScore(word);}
 };
 
 function vowelBonusScore(word)
@@ -68,7 +68,7 @@ function vowelBonusScore(word)
 let vowelBonusScoreObj = {
   'name':'Bonus Vowels',
   'description':'Vowels are 3 pts, consonants are 1 pt.',
-  'scorerFunction':function(word){
+  'scoringFunction':function(word){
       return vowelBonusScore(word);
   }
 };
@@ -86,17 +86,17 @@ function scrabbleScore(word)
 let scrabbleScoreObj = {
   'name':'Scrabble',
   'description':'The traditional scoring algorithm.',
-  'scorerFunction':function(word){
+  'scoringFunction':function(word){
     return scrabbleScore(word);
   }
 };
 
 //const scoringAlgorithms = [simpleScoreObj,vowelBonusScoreObj,scrabbleScoreObj];
 
-//const scoringAlgorithms = [];
+const scoringAlgorithms = [];
 
-const scoringAlgorithms = {
-};
+/*const scoringAlgorithms = {
+};*/
 
 scoringAlgorithms[0] = simpleScoreObj;
 scoringAlgorithms[1] = vowelBonusScoreObj;
@@ -148,7 +148,7 @@ let newPointStructure = transform(oldPointStructure);
 function runProgram() {
    let userWord = initialPrompt();
    let selectedAlgorithm = scorerPrompt();   
-   console.log(`Score for '${userWord}': ${selectedAlgorithm.scorerFunction(userWord)}\n`);   
+   console.log(`Score for '${userWord}': ${selectedAlgorithm.scoringFunction(userWord)}\n`);   
 }
 
 // Don't write any code below this line //
