@@ -93,10 +93,10 @@ let scrabbleScoreObj = {
 
 //const scoringAlgorithms = [simpleScoreObj,vowelBonusScoreObj,scrabbleScoreObj];
 
-const scoringAlgorithms = [];
+//const scoringAlgorithms = [];
 
-/*const scoringAlgorithms = {
-};*/
+const scoringAlgorithms = {
+};
 
 scoringAlgorithms[0] = simpleScoreObj;
 scoringAlgorithms[1] = vowelBonusScoreObj;
