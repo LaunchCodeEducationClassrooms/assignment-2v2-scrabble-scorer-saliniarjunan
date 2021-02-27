@@ -98,9 +98,9 @@ const scoringAlgorithms = [];
 /*const scoringAlgorithms = {
 };*/
 
-scoringAlgorithms["0"] = simpleScoreObj;
-scoringAlgorithms["1"] = vowelBonusScoreObj;
-scoringAlgorithms["2"] = scrabbleScoreObj;
+scoringAlgorithms[0] = simpleScoreObj;
+scoringAlgorithms[1] = vowelBonusScoreObj;
+scoringAlgorithms[2] = scrabbleScoreObj;
 
 
 /*const scoringAlgorithms = [];
@@ -109,7 +109,8 @@ scoringAlgorithms.push(vowelBonusScoreObj);
 scoringAlgorithms.push(scrabbleScoreObj);*/
 
 /*console.log("type of : "+ typeof(scoringAlgorithms));
-console.log(scoringAlgorithms);*/
+console.log(scoringAlgorithms);
+console.log("length is : " + scoringAlgorithms.length);*/
 
 function scorerPrompt() {
   const scoreInput =require('readline-sync');
