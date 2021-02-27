@@ -93,12 +93,22 @@ let scrabbleScoreObj = {
 
 //const scoringAlgorithms = [simpleScoreObj,vowelBonusScoreObj,scrabbleScoreObj];
 
-const scoringAlgorithms = [];
+const scoringAlgorithms = {
+};
+
+scoringAlgorithms["0"] = simpleScoreObj;
+scoringAlgorithms["1"] = vowelBonusScoreObj;
+scoringAlgorithms["2"] = scrabbleScoreObj;
+
+
+/*const scoringAlgorithms = [];
 scoringAlgorithms.push(simpleScoreObj);
 scoringAlgorithms.push(vowelBonusScoreObj);
 scoringAlgorithms.push(scrabbleScoreObj);
 
 console.log(typeof(scoringAlgorithms));
+console.log(scoringAlgorithms);*/
+
 function scorerPrompt() {
   const scoreInput =require('readline-sync');
   console.log("Which scoring algorithm would you like to use?\n");
@@ -134,7 +144,7 @@ let newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
    let userWord = initialPrompt();
-   let selectedAlgorithm = scorerPrompt();
+   let selectedAlgorithm = scorerPrompt();   
    console.log(`Score for '${userWord}': ${selectedAlgorithm.scorerFunction(userWord)}\n`);   
 }
 
