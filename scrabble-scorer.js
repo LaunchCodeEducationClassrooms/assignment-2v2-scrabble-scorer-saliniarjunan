@@ -33,26 +33,90 @@ function oldScrabbleScorer(word) {
 // don't change the names or your program won't work as expected. //
 
 function initialPrompt() {
-   console.log("Let's play some scrabble! Enter a word:");
+   console.log("Let's play some scrabble!\n");
+   return input.question("Enter a word to score: ");     
 };
 
-let simpleScore;
+let simpleScore = {
+  'name':'Simple Score',
+  'description':'Each letter is worth 1 point.',
+  'scorerFunction':function(word){return word.length*1;}
+};
 
-let vowelBonusScore;
+let vowelBonusScore = {
+  'name':'Bonus Vowels',
+  'description':'Vowels are 3 pts, consonants are 1 pt.',
+  'scorerFunction':function(word){
+      let vowelPoints = 0 ;
+      let vowelBonusScoreList = ['A' ,'E' ,'I' ,'O' ,'U'];
+      for(i=0; i<word.length; i++)
+      {
+        if(vowelBonusScoreList.includes(word[i].toUpperCase()))
+        {      
+          vowelPoints+=3;      
+        }
+        else
+        {      
+          vowelPoints+=1;
+        }
+      }
+      return vowelPoints;
+  }
+};
 
-let scrabbleScore;
+let scrabbleScore = {
+  'name':'Scrabble',
+  'description':'The traditional scoring algorithm.',
+  'scorerFunction':function(word)
+  {
+    let scrabbleScorePoint=0;
+    for(i=0; i<word.length ;i++)
+    {
+      scrabbleScorePoint += Number(newPointStructure[word[i].toLowerCase()]);
+    }
+    return scrabbleScorePoint;
+  }
+};
 
-const scoringAlgorithms = [];
+const scoringAlgorithms = [simpleScore,vowelBonusScore,scrabbleScore];
 
-function scorerPrompt() {}
+function scorerPrompt() {
+  const scoreInput =require('readline-sync');
+  console.log("Which scoring algorithm would you like to use?\n");
+  console.log("0 - Simple: One point per character");
+  console.log("1 - Vowel Bonus: Vowels are worth 3 points");
+  console.log("2 - Scrabble: Uses scrabble point system");
+  let promptInput =scoreInput.question("Enter 0, 1, or 2: ");
+  let validInput = [0,1,2];
+  while(!validInput.includes(Number(promptInput)))
+  {    
+    console.log("Invalid Input");
+    promptInput =scoreInput.question("Enter 0, 1, or 2: ");
+  }
+  return scoringAlgorithms[promptInput];
+}
 
-function transform() {};
+function transform(objStructure)
+{
+  let newPointStruct = {};
 
-let newPointStructure;
+  for (let iInd in objStructure)
+  {
+    for (let jInd=0; jInd < objStructure[iInd].length; jInd++)
+    {      
+      newPointStruct[(objStructure[iInd][jInd].toLowerCase())] = iInd;
+    } 
+    newPointStruct[' '] = 0;
+  }
+  return newPointStruct;
+}
+
+let newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
-   initialPrompt();
-   
+   let userWord = initialPrompt();
+   let selectedAlgorithm = scorerPrompt();
+   console.log(`Score for '${userWord}': ${selectedAlgorithm.scorerFunction(userWord)}`);   
 }
 
 // Don't write any code below this line //
