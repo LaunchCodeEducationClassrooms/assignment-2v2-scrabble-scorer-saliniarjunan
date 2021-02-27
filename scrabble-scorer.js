@@ -93,8 +93,10 @@ let scrabbleScoreObj = {
 
 //const scoringAlgorithms = [simpleScoreObj,vowelBonusScoreObj,scrabbleScoreObj];
 
-const scoringAlgorithms = {
-};
+const scoringAlgorithms = [];
+
+/*const scoringAlgorithms = {
+};*/
 
 scoringAlgorithms["0"] = simpleScoreObj;
 scoringAlgorithms["1"] = vowelBonusScoreObj;
@@ -104,9 +106,9 @@ scoringAlgorithms["2"] = scrabbleScoreObj;
 /*const scoringAlgorithms = [];
 scoringAlgorithms.push(simpleScoreObj);
 scoringAlgorithms.push(vowelBonusScoreObj);
-scoringAlgorithms.push(scrabbleScoreObj);
+scoringAlgorithms.push(scrabbleScoreObj);*/
 
-console.log(typeof(scoringAlgorithms));
+/*console.log("type of : "+ typeof(scoringAlgorithms));
 console.log(scoringAlgorithms);*/
 
 function scorerPrompt() {
