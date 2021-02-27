@@ -117,7 +117,7 @@ function transform(objStructure)
   {
     for (let jInd=0; jInd < objStructure[iInd].length; jInd++)
     {      
-      newPointStruct[(objStructure[iInd][jInd].toLowerCase())] = iInd;
+      newPointStruct[(objStructure[iInd][jInd].toLowerCase())] = Number(iInd);
     } 
     newPointStruct[' '] = 0;
   }
