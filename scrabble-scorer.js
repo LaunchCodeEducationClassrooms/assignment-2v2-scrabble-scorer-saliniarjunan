@@ -37,10 +37,14 @@ function initialPrompt() {
    return input.question("Enter a word to score: ");     
 };
 
-let simpleScore = {
+function simpleScore(word){
+  return word.length;
+}
+
+let simpleScoreObj = {
   'name':'Simple Score',
   'description':'Each letter is worth 1 point.',
-  'scorerFunction':function(word){return word.length;}
+  'scorerFunction':function(word){return simpleScore(word);}
 };
 
 function vowelBonusScore(word)
@@ -69,21 +73,25 @@ let vowelBonusScoreObj = {
   }
 };
 
-let scrabbleScore = {
+function scrabbleScore(word)
+{
+  let scrabbleScorePoint=0;
+  for(i=0; i<word.length ;i++)
+  {
+    scrabbleScorePoint += Number(newPointStructure[word[i].toLowerCase()]);
+  }
+  return scrabbleScorePoint;
+}
+
+let scrabbleScoreObj = {
   'name':'Scrabble',
   'description':'The traditional scoring algorithm.',
-  'scorerFunction':function(word)
-  {
-    let scrabbleScorePoint=0;
-    for(i=0; i<word.length ;i++)
-    {
-      scrabbleScorePoint += Number(newPointStructure[word[i].toLowerCase()]);
-    }
-    return scrabbleScorePoint;
+  'scorerFunction':function(word){
+    return scrabbleScore(word);
   }
 };
 
-const scoringAlgorithms = [simpleScore,vowelBonusScoreObj,scrabbleScore];
+const scoringAlgorithms = [simpleScoreObj,vowelBonusScoreObj,scrabbleScoreObj];
 
 function scorerPrompt() {
   const scoreInput =require('readline-sync');
