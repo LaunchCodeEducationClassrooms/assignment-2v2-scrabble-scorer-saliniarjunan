@@ -91,8 +91,14 @@ let scrabbleScoreObj = {
   }
 };
 
-const scoringAlgorithms = [simpleScoreObj,vowelBonusScoreObj,scrabbleScoreObj];
+//const scoringAlgorithms = [simpleScoreObj,vowelBonusScoreObj,scrabbleScoreObj];
 
+const scoringAlgorithms = [];
+scoringAlgorithms.push(simpleScoreObj);
+scoringAlgorithms.push(vowelBonusScoreObj);
+scoringAlgorithms.push(scrabbleScoreObj);
+
+console.log(typeof(scoringAlgorithms));
 function scorerPrompt() {
   const scoreInput =require('readline-sync');
   console.log("Which scoring algorithm would you like to use?\n");
